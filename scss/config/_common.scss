@@ -1,0 +1,255 @@
+// Заголовки, общие БЄМ блоки и проче...
+._loaded {
+  .account__left-side {
+    &::before {
+      transform: translateX(0);
+      opacity: 1;
+      transition-delay: 1000ms;
+    }
+  }
+  .account__login,
+  .form > *,
+  .account__logo {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 1000ms ease, opacity 1000ms ease;
+  }
+  .account__logo {
+    transition-delay: 500ms;
+  }
+  .form__title {
+    transition-delay: 700ms;
+  }
+  .form__text {
+    transition-delay: 900ms;
+  }
+  .form__fields {
+    transition-delay: 1100ms;
+  }
+  .form__actions {
+    transition-delay: 1300ms;
+  }
+  .account__login {
+    transition-delay: 1500ms;
+  }
+}
+
+.account {
+  min-height: 100vh;
+  display: flex;
+  @include media(1024) {
+    display: block;
+  }
+  // .account__left-side
+  &__left-side {
+    flex: 0 0 prc(712, 1440);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    font-family: "Manrope";
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: translateX(-100%);
+      opacity: 0;
+      transition: transform 800ms ease-in-out, opacity 1200ms ease-in-out;
+      background: url("./../images/bg.jpg") center / cover no-repeat;
+      @include media(1024) {
+        transform: translateX(0);
+      }
+    }
+  }
+  // .account__title
+  &__title {
+    max-width: rem(310);
+    font-size: rem(40);
+    line-height: math.div(46, 40);
+    font-weight: 800;
+    margin-bottom: rem(21);
+  }
+  // .account__description
+  &__description {
+    font-size: rem(20);
+    line-height: math.div(27, 20);
+    font-weight: 400;
+  }
+
+  &__left-side,
+  &__content {
+    padding: rem(76) prc(60, 1440);
+    @include media(1024) {
+      padding: rem(44) 5.166667%;
+    }
+  }
+
+  &__title,
+  &__description {
+    position: relative;
+    color: #fff;
+  }
+  // .account__content
+  &__content {
+    flex: 1 1 auto;
+  }
+  // .account__inset
+  &__inset {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: rem(50);
+    max-width: prc(430, 728);
+    margin: 0 auto;
+    min-height: 100%;
+    min-width: rem(430);
+    @include media(1024) {
+      gap: rem(34);
+      min-width: 0;
+      max-width: none;
+    }
+  }
+  // .account__logo
+  &__logo {
+    font-weight: 600;
+    font-size: rem(20);
+    line-height: math.div(27, 20);
+    color: #1d1d1b;
+    padding-left: rem(24+8);
+    background: url("./../images/logo.svg") left / rem(24) no-repeat;
+
+    transform: translateY(rem(30));
+    opacity: 0;
+  }
+  // .account__form
+  &__form {
+    & > * {
+      transform: translateY(rem(30));
+      opacity: 0;
+    }
+  }
+  // .account__login
+  &__login {
+    line-height: math.div(20, 16);
+    transform: translateY(rem(30));
+    opacity: 0;
+  }
+  // .account__link-login
+  &__link-login {
+    font-weight: 500;
+    line-height: math.div(20, 16);
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(30);
+  // .form__title
+  &__title {
+    font-family: "Manrope";
+    font-weight: 800;
+    font-size: rem(36);
+    line-height: math.div(49, 36);
+    @include notLast {
+      margin-bottom: rem(-25);
+    }
+  }
+  // .form__text
+  &__text {
+    font-size: rem(20);
+    line-height: math.div(26, 20);
+  }
+  // .form__fields
+  &__fields {
+    margin-top: rem(30);
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(16);
+  }
+  // .form__input
+  &__input {
+    height: rem(48);
+    border-bottom: rem(1) solid #e0e0e0;
+    transition: $standartTrans;
+    font-size: rem(20);
+    @include hidePlaceholder;
+    &:hover {
+      border-color: #000;
+    }
+    &:focus {
+      padding-left: rem(12);
+    }
+  }
+  // .form__actions
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(24);
+  }
+  // .form__button
+  &__button {
+    background-color: #060606;
+    border-radius: rem(6);
+    padding: rem(20) rem(36);
+    color: #fff;
+    transition: $standartTrans;
+    &:hover {
+      background-color: #333;
+      box-shadow: $lightBoxShadow;
+    }
+    &:focus {
+      background-color: #000;
+    }
+  }
+  // .form__or
+  &__or {
+    position: relative;
+    line-height: math.div(26, 20);
+    text-align: center;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      height: rem(1);
+      width: 100%;
+      background-color: #e1e1e1;
+    }
+    span {
+      background-color: #fff;
+      padding: 0 rem(5);
+      position: relative;
+      top: rem(-1);
+      font-size: rem(20);
+      color: #7a7a7a;
+    }
+  }
+  // .form__google-link
+  &__google-link {
+    border-radius: rem(6);
+    padding: rem(20) rem(36);
+    text-align: center;
+    transition: $standartTrans;
+    border: rem(1) solid #d9d9d9;
+    &:hover {
+      border-color: #000;
+    }
+    &:focus {
+      background-color: rgba(#000, 3%);
+    }
+    span {
+      text-align: left;
+      background: url("./../images/google.svg") left / rem(22) no-repeat;
+      padding-left: rem(22+16);
+      line-height: math.div(26, 20);
+    }
+  }
+}
